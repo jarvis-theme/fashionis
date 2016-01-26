@@ -25,7 +25,8 @@ return array(
         // Listen on event set up layout.
         'onSetLayout' => function($theme)
         {
-
+            // $title = Pengaturan::all();
+            //$theme->setTitle('title');
         },
 
         // Listen on event before render theme.
@@ -60,10 +61,12 @@ return array(
     ),
     'banner' => true,
     'themesColor' => array(
-        'type' => false,
-        'warnaDef' => 'header:#ff3f72;menu:#f64272;footer:#fc3a6e',
-        'color' => false
+        'type'=> 'false', 
+        'warnaDef'=>'header: #ff3f72;navigation-menu: #f64272;footer: #fc3a6e;hover-link: #75b628',
+        'color'=>false
     ),
-    'layout' => false,
+    'layout' => array(
+        'index1'=>'Layout dengan sidebar'
+    ),
 
 );

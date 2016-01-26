@@ -5,7 +5,7 @@
 @if($tema->isiCss=='')	
 {{generate_theme_css('fashionis/assets/css/styles.css')}}
 @else 	
-{{generate_theme_css('fashionis/assets/css/editstyle.css')}}
+{{generate_theme_css('fashionis/assets/css/editstyles.css')}}
 @endif	
 {{generate_theme_css('fashionis/assets/css/jquery.bxslider.css')}} 
 {{generate_theme_css('fashionis/assets/css/font-awesome.min.css')}}    
