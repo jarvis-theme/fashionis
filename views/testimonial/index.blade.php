@@ -57,13 +57,13 @@
                 </div>
             </div>
             @endif
-            @if(count(list_blog()) > 0)
+            @if(count(recentBlog()) > 0)
             <div class="left-section">
                 <div class="header-left-section">
                     <h1>Lates News</h1>
                 </div>
                 <ul id="tab-lates-news">
-                    @foreach(list_blog(3,@$blog_category) as $blog)
+                    @foreach(recentBlog(null,2) as $blog)
                     <li>
                         <a href="{{blog_url($blog)}}">
                             <div class="best-selling">

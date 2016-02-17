@@ -36,6 +36,9 @@
                 </ul>
             </div>
             @endif
+            <div class="left-section powerup">
+                {{pluginSidePowerup()}}
+            </div>
             @if(count(best_seller()) > 0)
             <div class="left-section">
                 <div class="header-left-section">
@@ -59,13 +62,13 @@
                 </div>
             </div>
             @endif
-            @if(count(list_blog()) > 0)
+            @if(count(recentBlog()) > 0)
             <div class="left-section">
                 <div class="header-left-section">
                     <h1>Artikel Terbaru</h1>
                 </div>
                 <ul id="tab-lates-news">
-                    @foreach(list_blog(3) as $blog)
+                    @foreach(recentBlog(null,2) as $blog)
                     <li>
                         <a href="{{blog_url($blog)}}">
                             <div class="best-selling">

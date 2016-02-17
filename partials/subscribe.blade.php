@@ -1,3 +1,4 @@
+@if($mailing->action != '')
 <div class="subscribe">
     <h1>Newsletter</h1>
     <h3>Dapatkan promo menarik dari toko kami segera!</h3>
@@ -13,3 +14,4 @@
         </form>
     </span>
 </div>
+@endif
