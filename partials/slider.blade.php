@@ -9,7 +9,7 @@
 					@else
 					<a href="#">
 					@endif
-						{{HTML::image(slide_image_url($val->gambar), 'slide banner')}}
+						{{HTML::image(slide_image_url($val->gambar), $val->title)}}
 					</a>
 				</li>
 				@endforeach

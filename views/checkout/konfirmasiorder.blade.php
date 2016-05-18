@@ -10,7 +10,9 @@
 						<th><span>Tanggal Order</span></th>
 						<th><span>Detail Order</span></th>
 						<th><span>Jumlah</span></th>
+						@if($checkouttype != 1)
 						<th><span>Jumlah yg belum dibayar</span></th>
+						@endif
 						<th><span>No. Resi</span></th>
 						<th><span>Status</span></th>
 					</tr>
@@ -44,9 +46,11 @@
 								@endif
 							@endif
 						</td>
+						@if($checkouttype != 1)
 						<td class="quantity">
 							{{($order->status==2 || $order->status==3) ? price(0) : ' - '.price($order->total)}}
 						</td>
+						@endif
 						<td class="sub-price">{{ $order->noResi}}</td>
 						<td class="total-price">
 						@if($checkouttype==1)
@@ -68,11 +72,13 @@
 			</table>
 		</div>
 		<hr>
+		@if($order->jenisPembayaran==1 && $order->status == 0)
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-			@if($order->jenisPembayaran==1 && $order->status == 0)
+			<div class="col-md-7 col-md-offset-3">
 				{{-- */ $checkouttype == 1 ? $url = 'konfirmasiorder/'.$order->id : '' /* --}}
-				<h2 class="confirm-title">Konfirmasi Pembayaran</h2>
+				<center>
+					<h3><b>{{trans('content.step5.confirm_btn')." ".trans('content.step3.transfer')}}</b></h3>
+				</center>
 				<hr>
 				{{Form::open(array('url'=> $url, 'method'=>'put'))}}                           
 					<div class="form-group">
@@ -98,12 +104,12 @@
 						<input type="number" class="form-control" id="search" placeholder="Jumlah Transfer" name="jumlah" value="{{$order->total}}" required>
 						@endif
 					</div>
-					<button type="submit" class="btn btn-success">Konfirmasi</button>
+					<button type="submit" class="btn btn-success">{{trans('content.step5.confirm_btn')}}</button>
 				{{Form::close()}}
-			@endif
 			<br>
 			</div>
 		</div>
+		@endif
 
 		@if($paymentinfo!=null)
 			<h3><center>Paypal Payment Details</center></h3><br>
@@ -138,17 +144,41 @@
 		@endif 
 	  
 		@if($order->jenisPembayaran==2)
-			<h3><center>Konfirmasi Pembayaran Via Paypal</center></h3><br>
-			<p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
-			{{$paypalbutton}}
+		<div class="well">
+			<center>
+				<h3><b>{{trans('content.step5.confirm_btn')}} Paypal</b></h3><hr>
+				<p>{{trans('content.step5.paypal')}}</p>
+			</center>
+			<center id="paypal">{{$paypalbutton}}</center>
 			<br>
-		@elseif($order->jenisPembayaran==6)
-            @if($order->status == 0)
-            <h3><center>Konfirmasi Pembayaran Via Bitcoin</center></h3><br>
-            <p>Silahkan melakukan pembayaran dengan bitcoin Anda secara online via bitcoin payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum <b>{{$expired_bitcoin}}</b>. Klik tombol "Pay with Bitcoin" di bawah untuk melanjutkan proses pembayaran.</p>
-            {{$bitcoinbutton}}
+		</div>
+		@elseif($order->jenisPembayaran==5 && $order->status == 0)
+		<div class="well">
+            <center>
+                <h3><strong>{{trans('content.step5.confirm_btn')}} DOKU MyShortCart</strong></h3><hr>
+                <p>{{trans('content.step5.doku')}}</p>
+				{{ $doku_button }}
+            </center>
             <br>
-            @endif
+        </div>
+		@elseif($order->jenisPembayaran == 6 && $order->status == 0)
+		<div class="well">
+			<center>
+				<h3><b>{{trans('content.step5.confirm_btn')}} Bitcoin</b></h3><hr>
+				<p>{{trans('content.step5.bitcoin')}}</p>
+				{{$bitcoinbutton}}
+			</center>
+			<br>
+		</div>
+		@elseif($order->jenisPembayaran == 8 && $order->status == 0)
+		<div class="well">
+			<center>
+				<h3><b>{{trans('content.step5.confirm_btn')}} Veritrans</b></h3><hr>
+				<p>{{trans('content.step5.veritrans')}}</p>
+				<button class="btn btn-info" onclick="location.href='{{ $veritrans_payment_url }}'">{{trans('content.step5.veritrans_btn')}}</button>
+			</center>
+			<br>
+		</div>
 		@endif
-   </div>
+	</div>
 </div>

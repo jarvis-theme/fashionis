@@ -2394,3 +2394,11 @@ div.footer-support div.description > blockquote {
 .confirm-title{color:#9037fc; text-align: center; margin-bottom: 0}
 .img-banner{margin-top: 10px}.footer-bottom img{border-radius: 7px}.fullwidth{width: 100%}
 #side-category span a{color: #7b7b7b}#side-category span.underline a:hover,span.underline:hover{text-decoration: none}
+center#paypal button[type="submit"] {
+    background: #019CDE;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+center#paypal button[type="submit"]:hover { opacity: 0.6 }

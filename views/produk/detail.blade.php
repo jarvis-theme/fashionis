@@ -186,6 +186,9 @@
                 @endif
                 </div>
             </div>
+            <div id="review">
+                {{ pluginComment(product_url($produk), @$produk) }}
+            </div>
         </div>
     </div>
 </div>

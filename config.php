@@ -65,8 +65,6 @@ return array(
         'warnaDef'=>'header: #ff3f72;navigation-menu: #f64272;footer: #fc3a6e;hover-link: #75b628',
         'color'=>false
     ),
-    'layout' => array(
-        'index1'=>'Layout dengan sidebar'
-    ),
+    'layout' => false,
 
 );
