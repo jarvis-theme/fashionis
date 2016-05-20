@@ -109,11 +109,11 @@
                 <div class="footer-bottom">
                     <div class="row">
                         <div class="col-xs-12 center">
-                            @if(!empty($bank))
-                                @foreach(list_banks() as $value)
+                            @foreach(list_banks() as $value)
+                                @if($value->status == 1)
                                 <img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}">
-                                @endforeach
-                            @endif
+                                @endif
+                            @endforeach
                             @foreach(list_payments() as $pay)
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
                                 <img src="{{url('img/bank/ipaymu.jpg')}}" alt="ipaymu" title="Ipaymu" />
@@ -142,4 +142,4 @@
         </div>
     </div>
 </div>
-{{pluginPowerup()}}
+{{pluginPowerup()}} 
