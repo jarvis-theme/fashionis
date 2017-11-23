@@ -7,7 +7,7 @@
     <div class="container" >
         <div class="row mp">
             <div class="col-sm-3">
-                <div class="left-account">
+                <div class="left-account membership">
                     <h3>My Account</h3>
                     <ul class="navigation">
                         <li><a href="{{url('member')}}">Daftar Pembelian</a></li>

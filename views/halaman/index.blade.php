@@ -91,12 +91,12 @@
             </div>
             @endforeach
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 artikel">
             <div class="single-page">
-                <div class="single-page">
+                <article class="col-lg-12" id="article">
                     <h3>{{$data->judul}}</h3>
                     {{$data->isi}}
-                </div>
+                </article>
             </div>
         </div>
     </div>

@@ -48,7 +48,7 @@
 
             {{ Theme::partial('subscribe') }}
         </div>
-        <div class="col-xs-12 col-sm-8 col-m-9">
+        <div class="col-xs-12 col-sm-8 col-md-9">
             <div class="single-page">
                 @if(count(list_blog(null,@$blog_category)) > 0)
                 <div class="row">
@@ -61,6 +61,7 @@
                             <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$blogs->kategori)}}">{{@$blogs->kategori->nama}}</a></span>
                             @endif
                         </p>
+                        <img src="{{ imgString($blogs->isi) }}" />
                         <p>
                             {{shortDescription($blogs->isi,300)}}<br>
                             <a href="{{blog_url($blogs)}}" class="theme">Baca Selengkapnya →</a>

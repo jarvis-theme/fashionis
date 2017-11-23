@@ -36,7 +36,7 @@
                 </ul>
             </div>
             @endif
-            <div class="left-section powerup">
+            <div class="left-section">
                 {{pluginSidePowerup()}}
             </div>
             @if(count(best_seller()) > 0)
@@ -88,8 +88,23 @@
             <form action="#" id="addorder">
                 <div class="detail-product">
                     <div class="row mp">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 col-md-6">
                             <img id="imgZoom" src="{{product_image_url($produk->gambar1,'medium')}}" data-zoom-image="{{product_image_url($produk->gambar1,'large')}}" alt="{{$produk->nama}}">
+                            {{--*/ $x=0; /*--}}
+                            @if($produk->gambar1!='')
+                                {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar2!='')
+                                {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar3!='')
+                                {{--*/ $x++; /*--}}
+                            @endif
+                            @if($produk->gambar4!='')
+                                {{--*/ $x++; /*--}}
+                            @endif
+
+                            @if($x > 1)
                             <div id="product_detail">
                                 @if($produk->gambar1 != '')
                                 <a href="{{product_image_url($produk->gambar1,'medium')}}" class="elevatezoom-gallery thumbnail-img" data-image="{{product_image_url($produk->gambar1,'medium')}}" data-zoom-image="{{product_image_url($produk->gambar1,'large')}}">
@@ -112,8 +127,9 @@
                                 </a>
                                 @endif
                             </div>
+                            @endif
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 col-md-6">
                             <div class="product-description">
                                 <h3 class="detail-title">{{$produk->nama}}</h3>
                                 <h3 class="detail-price">{{price($produk->hargaJual)}}</h3>
@@ -123,10 +139,10 @@
                                 <h2>Deskripsi Produk</h2>
                                 <p>{{short_description($produk->deskripsi, 700)}}</p>
                                 <div class="tab-quantity">
-                                    <h3>Quantity :</h3>
-                                    <button type='submit' class='qtyminus' field='qty' /><i class="fa fa-caret-left"></i></button>
-                                    <input type='text' name='qty' value='1' class='qty' />
-                                    <button type='button' value='+' class='qtyplus' field='qty' /><i class="fa fa-caret-right"></i></button>
+                                    <h3>Jumlah :</h3>
+                                    <button type="submit" class="qtyminus" field="qty" /><i class="fa fa-caret-left"></i></button>
+                                    <input type="number" name="qty" value="1" class="qty" pattern="[0-9]" />
+                                    <button type="button" value="+" class="qtyplus" field="qty" /><i class="fa fa-caret-right"></i></button>
                                 </div>
                                 <div class="avalaible-text">
                                     @if($produk->stok > 0)
@@ -138,11 +154,11 @@
                                     </span>
                                     @endif
                                 </div>
-                                @if($opsiproduk->count() > 0)                 
+                                @if($opsiproduk->count() > 0)
                                 <div class="size-list">
                                     <div class="form-group">
-                                        <label class="col-sm-4 control-label">Opsi :</label>
-                                        <div class="col-sm-5">
+                                        <label class="col-sm-12 control-label">Opsi :</label>
+                                        <div class="col-sm-6" id="ops">
                                             <select class="form-control attribute_select" name="opsiproduk">
                                                 <option value="">-- Pilih Opsi --</option>
                                                 @foreach ($opsiproduk as $key => $opsi)

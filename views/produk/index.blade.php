@@ -36,7 +36,7 @@
                 </ul>
             </div>
             @endif
-            <div class="left-section powerup">
+            <div class="left-section">
                 {{pluginSidePowerup()}}
             </div>
             @if(count(best_seller()) > 0)

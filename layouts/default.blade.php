@@ -9,7 +9,7 @@
 		<div id="header">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-sm-6 col-md-6 header-logo">
 						@if( logo_image_url() )
 						<span>
 							<a href="{{url('home')}}">

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row mp no-rutter">
-        <div class="advertising">
+        <div class="advertising nopad">
             @foreach(horizontal_banner() as $banners)
             <div class="col-sm-12">
                 <a href="{{url($banners->url)}}">
@@ -38,14 +38,14 @@
 
                 <div class="content-support">
                     <div class="row">
-                        <div class="col-sm-5">
+                        <div class="col-sm-3">
                             <div class="content-footer-child">
                                 <h3>Tentang Kami</h3>
                                 <p>{{short_description(about_us()->isi,400)}}</p>
                             </div>
                         </div>
                         @foreach(all_menu() as $key=>$menu)
-                            @if($key == '2')
+                            @if($key == '2' || $key == 1)
                             <div class="col-sm-3">
                                 <div class="content-footer-child">
                                     <h3>{{$menu->nama}}</h3>
@@ -63,7 +63,7 @@
                             @endif
                         @endforeach
                         
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="content-footer-child">
                                 <h3>Hubungi Kami</h3>
                                 <p>{{@$kontak->alamat}}</p>
@@ -100,6 +100,11 @@
                                         <span class="icon-sm" title="Tumblr"><i class="fa fa-tumblr icn"></i></span>
                                     </a>
                                     @endif
+                                    @if(!empty($kontak->picmix))
+                                    <a href="{{url($kontak->picmix)}}" target="_blank" title="Picmix">
+                                        <img class="picmix" src="//d3kamn3rg2loz7.cloudfront.net/blogs/event/icon-picmix.png">
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -129,7 +134,7 @@
                             <img src="{{url('img/bank/doku.jpg')}}" alt="doku myshortcart" title="Doku" />
                             @endif
                             @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-                            <img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
+                            <img src="{{url('img/bank/midtrans.png')}}" class="midtrans" alt="Midtrans" title="Midtrans">
                             @endif
                         </div>
                     </div>
